@@ -1,16 +1,17 @@
 ﻿# BarcodeSystem
-C# ile yazılmış basit barkod sistemli mağaza ürün satış masaüstü uygulaması.
+ <p>C# ile yazılmış basit barkod sistemli mağaza ürün satış masaüstü uygulaması.</p>
+ <p>Kişi ekleyip ve aşağıdaki örnek barkodları kullanarak uygulamayı test edebilirsiniz.</p>
 
 
-Kişi ekleyip ve aşağıdaki örnek barkodları kullanarak uygulamayı test edebilirsiniz.
-normal
-8690000004060
-8690000004080
-8690000004090
+
+<b>normal</b><br>
+8690000004060<br>
+8690000004080<br>
+8690000004090<br>
 
 
-indirimli
-8699000001880
-8699000004090
-8699000004100
-8699000004110
+<b>indirimli</b><br>
+8699000001880<br>
+8699000004090<br>
+8699000004100<br>
+8699000004110<br>
