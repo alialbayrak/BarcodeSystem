@@ -4,13 +4,13 @@
 
 
 
-<b>normal</b><br>
+<b>normal fiyatlı ürünler</b><br>
 8690000004060<br>
 8690000004080<br>
 8690000004090<br>
 
 
-<b>indirimli</b><br>
+<b>indirimli ürünler</b><br>
 8699000001880<br>
 8699000004090<br>
 8699000004100<br>
