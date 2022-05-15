@@ -76,7 +76,11 @@ namespace AliSoft
                             OleDbDataAdapter idbul = new OleDbDataAdapter("Select MAX(ID) AS ID From [satış$]", baglan);
                             DataTable id = new DataTable();
                             idbul.Fill(id);
-                            int ID = Convert.ToInt32(id.Rows[0]["ID"].ToString());
+                            int ID = 0;
+                            if (!string.IsNullOrEmpty(id.Rows[0]["ID"].ToString()))
+                            {
+                                ID = Convert.ToInt32(id.Rows[0]["ID"].ToString());
+                            }
                             ID++;
                             progressBar1.Value += 15;
                             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
@@ -285,9 +289,8 @@ namespace AliSoft
                     {
                         textBarkod_No.ReadOnly = true;
                         baglan.Open();
-                        Int64 barkodno = 0;
-                        barkodno = Convert.ToInt64(textBarkod_No.Text.Substring(0, 12));
-                        OleDbDataAdapter komut = new OleDbDataAdapter("Select BARKOD_NO, MODEL ,FİYAT from [normal$] where BARKOD_NO=" + barkodno + "", baglan);
+                        var barkodno = textBarkod_No.Text;
+                        OleDbDataAdapter komut = new OleDbDataAdapter("Select BARKOD_NO, MODEL ,FİYAT from [normal$] where BARKOD_NO=" + barkodno, baglan);
                         DataTable ttable = new DataTable();
                         komut.Fill(ttable);
                         if(ttable.Rows.Count > 0)
@@ -305,7 +308,7 @@ namespace AliSoft
                         }
                         else if (ttable.Rows.Count == 0)
                         {
-                            OleDbDataAdapter komutt = new OleDbDataAdapter("Select BARKOD_NO, MODEL , İNDİRİMLİ_FİYAT from [indirimli$] where BARKOD_NO=" + barkodno + "", baglan);
+                            OleDbDataAdapter komutt = new OleDbDataAdapter("Select BARKOD_NO, MODEL , İNDİRİMLİ_FİYAT from [indirimli$] where BARKOD_NO=" + barkodno, baglan);
                             DataTable tttable = new DataTable();
                             komutt.Fill(tttable);
                             if (tttable.Rows.Count > 0)
@@ -340,41 +343,6 @@ namespace AliSoft
                     {
                         textBarkod_No.ReadOnly = false;
                         baglan.Close();
-                    }
-                }
-                else if (txtboxici.Length == 12)
-                {
-                    try
-                    {
-                        Int64 barkodno = 0;
-                        barkodno = Convert.ToInt64(textBarkod_No.Text.Substring(0, 11));
-                        baglan.Open();
-                        OleDbDataAdapter komut = new OleDbDataAdapter("Select BARKOD_NO, MODEL ,FİYAT from [normal$] where BARKOD_NO=" + barkodno + "", baglan);
-                        DataTable ttable = new DataTable();
-                        komut.Fill(ttable);
-                        baglan.Close();
-                        if (ttable.Rows.Count > 0)
-                        {
-                            dataGridView1.Rows.Add();
-                            i++;
-                            dataGridView1.Rows[i].Cells[0].Value = ttable.Rows[0]["BARKOD_NO"].ToString();
-                            dataGridView1.Rows[i].Cells[1].Value = ttable.Rows[0]["MODEL"].ToString();
-                            dataGridView1.Rows[i].Cells[2].Value = ttable.Rows[0]["FİYAT"].ToString();
-                            dataGridView1.Rows[i].Cells[3].Value = 1;
-                            fiyat = fiyat + Convert.ToDecimal(ttable.Rows[0]["FİYAT"].ToString());
-                            lblFiyat.Text = Convert.ToString(fiyat);
-                            int okutuldanurun = dataGridView1.Rows.Count - 1;
-                            labelAdetokutuldu.Text = okutuldanurun + " ADET ÜRÜN OKUTULDU";
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ürün Bulunamadı", "Bulunamadı");
-                        }
-                        textBarkod_No.Clear();
-                    }
-                    catch (Exception hata)
-                    {
-                        MessageBox.Show("İşlem Sırasında Hata Oluştu." + hata.Message);
                     }
                 }
                 else

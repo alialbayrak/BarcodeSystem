@@ -72,7 +72,11 @@ namespace AliSoft
                 OleDbDataAdapter idbul = new OleDbDataAdapter(idsec);
                 DataTable id = new DataTable();
                 idbul.Fill(id);
-                int ID = Convert.ToInt32(id.Rows[0]["Expr1000"].ToString());
+                int ID = 0;
+                if (!string.IsNullOrEmpty(id.Rows[0]["Expr1000"].ToString()))
+                {
+                    ID = Convert.ToInt32(id.Rows[0]["Expr1000"].ToString());
+                }
                 ID++;
                 OleDbDataAdapter kontrolet = new OleDbDataAdapter("SELECT * FROM [müşteri$] WHERE TELEFON = '" + texttelefon.Text + "'", baglan);
                 DataTable ktable = new DataTable();
