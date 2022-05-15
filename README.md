@@ -13,8 +13,7 @@
 8699000004100<br>
 8699000004110<br>
 
-
-![Screenshot_1](https://user-images.githubusercontent.com/46328862/168490507-c630344a-c153-44bf-8120-cf4276349fe3.png)
+![Screenshot_1](https://user-images.githubusercontent.com/46328862/168490579-3b3ee44a-88d0-4155-8b2c-cd2eba7030f2.png)
 
 
 veritabanı:
